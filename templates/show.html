@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+       
+{% block 'content' %}
+
+
+<div class="container mt-5 pb-5">
+    <div class="row">
+        
+        <div class="col-2"></div>
+        <div class="col-8">
+            <div class=" d-flex justify-content-end "><a href="{% url 'register' %}" class="btn w-25 btn-sm btn-primary">Add</a> </div>
+           
+            <table class="table table-hover table ">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>salary</th>
+                        <th>Date of Birtday</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for  i in emp %}
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.firstname}}</td>
+                        <td>{{i.lastname}}</td>
+                        <td>{{i.salary}}</td>
+                        <td>{{i.dob}}</td>
+                        <td><a href="{% url 'edit' i.id %}" class="btn btn-sm btn-success">Edit</a> <a href="{% url 'delete' i.id %}" class="btn btn-sm btn-danger ml-2">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-2"></div>
+
+    </div> 
+</div>  
+       
+
+{% endblock  %}
